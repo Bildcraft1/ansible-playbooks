@@ -17,6 +17,7 @@
       register: reboot_required
 
     - name: Send notify to Telegram
+      become: true
       community.general.telegram:
       token: '{{ tg_token }}'
       api_args:
