@@ -19,11 +19,11 @@
     - name: Send notify to Telegram
       become: true
       community.general.telegram:
-      token: '{{ tg_token }}'
-      api_args:
-        chat_id: '{{ chatid }}'
-        parse_mode: "markdown"
-        text: "Restart Required - Proxmox Node"
-        disable_web_page_preview: true
-        disable_notification: true
+        token: '{{ tg_token }}'
+        api_args:
+          chat_id: '{{ chatid }}'
+          parse_mode: "markdown"
+          text: "Restart Required - Proxmox Node"
+          disable_web_page_preview: true
+          disable_notification: true
       when: reboot_required.stat.exists == true
