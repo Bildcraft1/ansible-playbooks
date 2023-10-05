@@ -25,4 +25,4 @@
         text: "Restart Required - Proxmox Node"
         disable_web_page_preview: true
         disable_notification: true
-      when reboot_required.stat.exists == true
+      when: reboot_required.stat.exists == true
