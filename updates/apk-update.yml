@@ -1,4 +1,4 @@
-- hosts: alpine
+- hosts: "{{ hosts }}"
 
   become: yes
   tasks:
