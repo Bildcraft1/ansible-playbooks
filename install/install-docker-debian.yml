@@ -17,11 +17,18 @@
         url: https://download.docker.com/linux/debian/gpg
         state: present
         keyring: /etc/apt/keyrings/docker.gpg
+        
+    - name: Get Debian codename
+      command: lsb_release -cs
+      register: debian_codename
+      changed_when: false
+
     - name: add docker repository
       apt_repository:
         filename: docker 
-        repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian {{ ansible_lsb.codename|lower }} stable
+        repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian {{ debian_codename.stdout }} stable
         state: present
+
     - name: install docker engine
       apt:
         name:
