@@ -22,8 +22,9 @@
 
     - name: Clone a repo with separate git directory
       ansible.builtin.git:
-        repo: 'https://github.com/ansible/ansible-examples.git'
+        repo: 'https://github.com/donaldzou/WGDashboard.git'
         dest: /srv/wgdashboard
+        version: v3.1-dev
 
     - name: Change the working directory to somedir/ before executing the command
       ansible.builtin.shell: cd /srv/wgdashboard
