@@ -25,7 +25,7 @@
         repo: https://github.com/ansible/ansible-examples.git
         dest: /srv/wgdashboard
         single_branch: yes
-        version: v3.0.6
+        version: v3.1-dev
 
     - name: Change the working directory to somedir/ before executing the command
       ansible.builtin.shell: cd /srv/wgdashboard
