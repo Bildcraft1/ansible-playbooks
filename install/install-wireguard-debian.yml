@@ -1,0 +1,49 @@
+---
+- name: install wireguard and wg-dashboard
+  hosts: "{{ hosts }}"
+  become: yes
+  tasks:
+    - name: install dependencies
+      apt:
+        name:
+          - git
+          - python3-pip
+          - python3-venv
+          - python3-dev
+          - build-essential
+        update_cache: yes
+
+    - name: install wireguard
+      apt:
+        name:
+          - wireguard
+          - wireguard-tools
+        update_cache: yes
+
+    - name: Clone a repo with separate git directory
+      ansible.builtin.git:
+        repo: https://github.com/ansible/ansible-examples.git
+        dest: /srv/wgdashboard
+        single_branch: yes
+        version: v3.0.6
+
+    - name: Change the working directory to somedir/ before executing the command
+      ansible.builtin.shell: cd /srv/wgdashboard
+
+    - name: Give execute permissions
+      ansible.builtin.file:
+        path: /srv/wgdashboard/wg-dashboard.sh
+        mode: u+x
+
+    - name: Run the script
+      ansible.builtin.shell: /srv/wgdashboard/wgd.sh install
+
+
+    - name: Give 755 permissions to /etc/wireguard
+      ansible.builtin.file:
+        path: /etc/wireguard
+        mode: 0755
+        state: directory
+
+    - name: start wg dashboard
+      ansible.builtin.shell: /srv/wgdashboard/wgd.sh start
