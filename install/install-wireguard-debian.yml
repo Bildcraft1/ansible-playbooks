@@ -27,7 +27,7 @@
         creates: /srv/wgdashboard/.git
 
     - name: Change the working directory to somedir/ before executing the command
-      ansible.builtin.shell: cd /srv/wgdashboard
+      ansible.builtin.shell: cd /srv/wgdashboard/src
 
     - name: Give execute permissions
       ansible.builtin.file:
