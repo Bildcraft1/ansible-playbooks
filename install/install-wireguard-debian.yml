@@ -25,6 +25,7 @@
         repo: 'https://github.com/donaldzou/WGDashboard.git'
         dest: /srv/wgdashboard
         version: v3.1-dev
+        force: "yes"
 
     - name: Change the working directory to somedir/ before executing the command
       ansible.builtin.shell: cd /srv/wgdashboard
