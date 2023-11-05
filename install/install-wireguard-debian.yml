@@ -21,9 +21,11 @@
         update_cache: yes
 
     - name: Clone WGDashboard repository
-      git:
-        repo: 'https://github.com/donaldzou/WGDashboard.git'
-        dest: '/srv/wgdashboard'
+      ansible.builtin.command:
+        cmd: git clone --branch v3.1-dev --single-branch https://github.com/donaldzou/WGDashboard.git /srv/wgdashboard
+      args:
+        creates: /srv/wgdashboard/.git
+
 
 
     - name: Change the working directory to somedir/ before executing the command
