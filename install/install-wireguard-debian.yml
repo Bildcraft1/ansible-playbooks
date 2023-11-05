@@ -22,7 +22,7 @@
 
     - name: Clone a repo with separate git directory
       ansible.builtin.git:
-        repo: https://github.com/ansible/ansible-examples.git
+        repo: 'https://github.com/ansible/ansible-examples.git'
         dest: /srv/wgdashboard
         version: v3.1-dev
 
@@ -36,7 +36,6 @@
 
     - name: Run the script
       ansible.builtin.shell: /srv/wgdashboard/wgd.sh install
-
 
     - name: Give 755 permissions to /etc/wireguard
       ansible.builtin.file:
