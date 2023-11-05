@@ -31,11 +31,11 @@
 
     - name: Give execute permissions
       ansible.builtin.file:
-        path: /srv/wgdashboard/wgd.sh
+        path: /srv/wgdashboard/src/wgd.sh
         mode: u+x
 
     - name: Run the script
-      ansible.builtin.shell: /srv/wgdashboard/wgd.sh install
+      ansible.builtin.shell: /srv/wgdashboard/src/wgd.sh install
 
     - name: Give 755 permissions to /etc/wireguard
       ansible.builtin.file:
@@ -44,4 +44,4 @@
         state: directory
 
     - name: start wg dashboard
-      ansible.builtin.shell: /srv/wgdashboard/wgd.sh start
+      ansible.builtin.shell: /srv/wgdashboard/src/wgd.sh start
