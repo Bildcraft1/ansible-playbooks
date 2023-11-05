@@ -24,9 +24,6 @@
       git:
         repo: 'https://github.com/donaldzou/WGDashboard.git'
         dest: '/srv/wgdashboard'
-        version: 'v3.1-dev'  # Updated to point to v3.1-dev branch
-        force: yes
-        remote: origin
 
 
     - name: Change the working directory to somedir/ before executing the command
