@@ -20,12 +20,13 @@
           - wireguard-tools
         update_cache: yes
 
-    - name: Clone a repo with separate git directory
-      ansible.builtin.git:
+    - name: Clone WGDashboard repository
+      git:
         repo: 'https://github.com/donaldzou/WGDashboard.git'
-        dest: /srv/wgdashboard
-        version: v3.1-dev
-        force: "yes"
+        dest: '/srv/wgdashboard'
+        version: 'v3.1-dev'  # Updated to point to v3.1-dev branch
+        force: yes
+
 
     - name: Change the working directory to somedir/ before executing the command
       ansible.builtin.shell: cd /srv/wgdashboard
