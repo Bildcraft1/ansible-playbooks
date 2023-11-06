@@ -22,7 +22,7 @@
 
     - name: Clone WGDashboard repository
       ansible.builtin.command:
-        cmd: git clone --branch v3.1-dev --single-branch https://github.com/donaldzou/WGDashboard.git /srv/wgdashboard
+        cmd: git clone -b v3.0.6 --single-branch https://github.com/donaldzou/WGDashboard.git /srv/wgdashboard
       args:
         creates: /srv/wgdashboard/.git
 
@@ -33,6 +33,11 @@
       ansible.builtin.file:
         path: /srv/wgdashboard/src/wgd.sh
         mode: u+x
+
+    - name: Install pip requirements
+      ansible.builtin.shell: pip3 install -r /srv/wgdashboard/src/requirements.txt --break-system-packages
+      args:
+        chdir: /srv/wgdashboard/src
 
     - name: Run the script
       ansible.builtin.shell: /srv/wgdashboard/src/wgd.sh install
