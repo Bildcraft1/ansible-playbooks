@@ -5,8 +5,8 @@
     # Upgrade packages
     - name: Upgrade all packages
       ansible.builtin.yum:
-      name: '*'
-      state: latest
+        name: '*'
+        state: latest
     # Check if reboot is required
     - name: check if system reboot is required
       become: true
